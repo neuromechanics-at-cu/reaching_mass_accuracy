@@ -11,7 +11,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r setup, include=FALSE}
+```{r, include=FALSE}
 #====================== SETUP ==============================
 # Load packages
 pacman::p_load(ggplot2, ggthemes, lmtest, tidyr, multcomp,
@@ -1524,9 +1524,9 @@ Movedur_by_experiment <- all_exp_avg_plot_addmass('movedur',prefdata,smalltdata,
 Movedur_by_experiment+theme(text = element_text(size = 18))
 
 # Save the plot if necessary.
-setwd(pref_plots_dir)
+#setwd(pref_plots_dir)
 if (save_plots){
-  ggsave('Movedur_by_experiment.pdf',plot=Movedur_by_experiment+theme(text = element_text(size = 18)),width=12,height=8, useDingbats = FALSE)
+  ggsave('GRAPHS/Preferred/Movedur_by_experiment.pdf',plot=Movedur_by_experiment+theme(text = element_text(size = 18)),width=12,height=8, useDingbats = FALSE)
 }
 
 ```
@@ -1588,9 +1588,9 @@ Movedur_norm_by_experiment <- all_exp_avg_plot_addmass('movedur_norm',prefdata,s
   
 Movedur_norm_by_experiment+theme(text = element_text(size = 18))
 
-setwd(pref_plots_dir)
+#setwd(pref_plots_dir)
 if (save_plots){
-  ggsave('movedur_norm_by_experiment.pdf',plot=Movedur_norm_by_experiment+theme(text = element_text(size = 18)),width=12,height=8, useDingbats = FALSE)
+  ggsave('GRAPHS/Preferred/movedur_norm_by_experiment.pdf',plot=Movedur_norm_by_experiment+theme(text = element_text(size = 18)),width=12,height=8, useDingbats = FALSE)
 }
 
 ```
@@ -1719,9 +1719,9 @@ Peakvel_norm_by_experiment <- all_exp_avg_plot_addmass('peakvel_target_norm',pre
   
 Peakvel_norm_by_experiment+theme(text = element_text(size = 18))
 
-setwd(pref_plots_dir)
+#setwd(pref_plots_dir)
 if (save_plots){
-  ggsave('peakvel_norm_by_experiment.pdf',plot=Peakvel_norm_by_experiment+theme(text = element_text(size = 18)),width=12,height=8, useDingbats = FALSE)
+  ggsave('GRAPHS/Preferred/peakvel_norm_by_experiment.pdf',plot=Peakvel_norm_by_experiment+theme(text = element_text(size = 18)),width=12,height=8, useDingbats = FALSE)
 }
 
 ```
@@ -2123,9 +2123,9 @@ Miss_dist_norm_by_experiment <- all_exp_avg_plot_addmass('miss_dist_norm',prefda
   
 Miss_dist_norm_by_experiment+theme(text = element_text(size = 18))
 
-setwd(pref_plots_dir)
+#setwd(pref_plots_dir)
 if (save_plots){
-  ggsave('miss_dist_norm_by_experiment.pdf',plot=Miss_dist_norm_by_experiment+theme(text = element_text(size = 18)),width=12,height=8, useDingbats = FALSE)
+  ggsave('GRAPHS/Preferred/miss_dist_norm_by_experiment.pdf',plot=Miss_dist_norm_by_experiment+theme(text = element_text(size = 18)),width=12,height=8, useDingbats = FALSE)
 }
 
 ```
@@ -3078,9 +3078,9 @@ pref_grouped <- plot_grid(plot_grid(resamp_group,resamp_group_RT,nrow = 2),
 
 theme_set(theme_cowplot(font_size=12))
 
-setwd(pref_plots_dir)
+#setwd(pref_plots_dir)
 if (save_plots){
-  ggsave('Pref_results_grouped.pdf',plot=pref_grouped,width=9/.9,height=12, useDingbats = FALSE)
+  ggsave('GRAPHS/Preferred/Pref_results_grouped.pdf',plot=pref_grouped,width=9/.9,height=12, useDingbats = FALSE)
 }
 
 ```
@@ -3299,8 +3299,8 @@ MPGross <- ggplot(mpdata_factor,
   ylim(0,250)
 
 if (save_plots){
-  setwd(met_plots_dir)
-  ggsave('MPGross_by_movedur_met.pdf',plot=MPGross,height = 6, width = 8, useDingbats = FALSE, path = met_plots_dir)
+  #setwd(met_plots_dir)
+  ggsave('GRAPHS/Metabolics/MPGross_by_movedur_met.pdf',plot=MPGross,height = 6, width = 8, useDingbats = FALSE, path = met_plots_dir)
 }
 
 ```
@@ -3457,8 +3457,8 @@ MPNet <- ggplot(mpdata,
         axis.line         = element_line(color='black'))+
   ylim(0,200)
 
-setwd(met_plots_dir)
-if (save_plots){ggsave('MPNet_by_movedur.pdf',plot = MPNet,height = 6, width = 8, useDingbats = FALSE)}
+#setwd(met_plots_dir)
+if (save_plots){ggsave('GRAPHS/Metabolics/MPNet_by_movedur.pdf',plot = MPNet,height = 6, width = 8, useDingbats = FALSE)}
 
 ```
 
@@ -3627,8 +3627,8 @@ MCGross <- ggplot(data=mpdata_factor)+
   ylim(65,180)
 
 if (save_plots){
-  setwd(met_plots_dir)
-  ggsave('MCostGross_by_movedur_met.pdf',plot=MCGross,height = 6, width = 8, useDingbats = FALSE, path = met_plots_dir)
+  #setwd(met_plots_dir)
+  ggsave('GRAPHS/Metabolics/MCostGross_by_movedur_met.pdf',plot=MCGross,height = 6, width = 8, useDingbats = FALSE, path = met_plots_dir)
 }
 
 preffun.1 <- function(t) a_mpgross*t+b_mpgross*(2.506^c_mpgross)/(t^(d_mpgross-1))
@@ -3637,10 +3637,21 @@ preffun.3 <- function(t) a_mpgross*t+b_mpgross*(4.894^c_mpgross)/(t^(d_mpgross-1
 preffun.4 <- function(t) a_mpgross*t+b_mpgross*(6.282^c_mpgross)/(t^(d_mpgross-1))
 
 # Create table of optimal durations
-# MCostmin_dur = c(optimize(preffun.1,interval=c(0,2))$minimum,optimize(preffun.2,interval=c(0,2))$minimum,optimize(preffun.3,interval=c(0,2))$minimum,optimize(preffun.4,interval=c(0,4))$minimum)
-# MCostmin_obj = c(optimize(preffun.1,interval=c(0,2))$objective,optimize(preffun.2,interval=c(0,2))$objective,optimize(preffun.3,interval=c(0,2))$objective,optimize(preffun.4,interval=c(0,4))$objective)
-# temppref = cbind(c(2.506,3.959,4.894,5.282),MCostmin_obj,MCostmin_dur,aggregate(movedur ~ eff_mass,prefdata,mean)$movedur)
-# colnames(temppref) = c('effmass','MCostmin_obj','MCostgross_min_dur','pref_avg_dur')
+MCostmin_dur = c(optimize(preffun.1, interval=c(0,2))$minimum,
+                 optimize(preffun.2, interval=c(0,2))$minimum, 
+                 optimize(preffun.3,interval=c(0,2))$minimum,
+                 optimize(preffun.4,interval=c(0,4))$minimum)
+MCostmin_obj = c(optimize(preffun.1,interval=c(0,2))$objective,
+                 optimize(preffun.2,interval=c(0,2))$objective,
+                 optimize(preffun.3,interval=c(0,2))$objective,
+                 optimize(preffun.4,interval=c(0,4))$objective)
+
+temppref = cbind(c(2.506,3.959,4.894,5.282),
+                 MCostmin_obj, 
+                 MCostmin_dur, 
+                 aggregate(movedur ~ eff_mass,prefdata,mean)$movedur)
+
+colnames(temppref) = c('effmass','MCostmin_obj','MCostgross_min_dur','pref_avg_dur')
 
 ```
 
@@ -3751,9 +3762,9 @@ MCNet <- ggplot(data=mpdata_factor)+
   xlim(.45,1.5)+
   ylim(0,120)
 
-setwd(met_plots_dir)
+#setwd(met_plots_dir)
 if (save_plots){
-  ggsave('MCostNet_by_movedur.pdf',plot=MCNet,height = 6, width = 8, useDingbats = FALSE, path = met_plots_dir)
+  ggsave('GRAPHS/Metabolics/MCostNet_by_movedur.pdf',plot=MCNet,height = 6, width = 8, useDingbats = FALSE, path = met_plots_dir)
 }
 
 preffun.1 <- function(t) a_mpnet*t+b_mpnet*(2.506^c_mpnet)/(t^(d_mpnet-1))
@@ -4324,8 +4335,8 @@ met_results <- plot_grid(met_results,
                          rel_widths = c(.85,.15))
 
 theme_set(theme_cowplot(font_size=7.76))
-setwd(met_plots_dir)
-if (save_plots){ggsave('Met_results_r.pdf',plot=met_results,width=6,height=7, device=cairo_pdf)}
+#setwd(met_plots_dir)
+if (save_plots){ggsave('GRAPHS/Metabolics/Met_results_r.pdf',plot=met_results,width=6,height=7, device=cairo_pdf)}
 ```
 
 ```{r metresults1, echo = FALSE, warning = FALSE, fig.width=12, fig.height=10, fig.cap = 'Metabolic experiment results.'}
@@ -5005,8 +5016,8 @@ p_alpha_plot_cont2 <- ggplot(data=sim_success,
         axis.line         = element_line(color='black'))+
   scale_y_continuous(expand = c(0, 0), limits = c(0, 1.05))
 
-setwd(pref_plots_dir)
-if (save_plots){ggsave(filename='p_alpha_plot_cont2.pdf',plot=p_alpha_plot_cont2,height=6,width=9,useDingbats=FALSE)}
+#setwd(pref_plots_dir)
+if (save_plots){ggsave(filename='GRAPHS/Preferred/p_alpha_plot_cont2.pdf',plot=p_alpha_plot_cont2,height=6,width=9,useDingbats=FALSE)}
 
 masses = unique(prefdata$eff_mass)
 fun.1 <- function(t) 1/(1+exp(-coef(met_p_glm)[1]-coef(met_p_glm)[3]*masses[1]-coef(met_p_glm)[2]*t))
@@ -7553,8 +7564,8 @@ utilfits_by_exp_3alphas <- ggplot()+
          alpha = FALSE)
 
 
-setwd(pref_plots_dir)
-if (save_plots){ggsave(filename='utilfits_by_exp_3alphas.pdf',plot=utilfits_by_exp_3alphas,height=4,width=6,useDingbats=FALSE)}
+#setwd(pref_plots_dir)
+if (save_plots){ggsave(filename='GRAPHS/Preferred/utilfits_by_exp_3alphas.pdf',plot=utilfits_by_exp_3alphas,height=4,width=6,useDingbats=FALSE)}
 
 ```
 
@@ -7709,8 +7720,8 @@ utilfits_by_exp_2alphas <- ggplot()+
                            default.unit='inch'),
          alpha = FALSE)
 
-setwd(pref_plots_dir)
-if (save_plots){ggsave(filename='utilfits_by_exp_2alphas.pdf',plot=utilfits_by_exp_2alphas,height=8,width=12,useDingbats=FALSE)}
+#setwd(pref_plots_dir)
+if (save_plots){ggsave(filename='GRAPHS/Preferred/utilfits_by_exp_2alphas.pdf',plot=utilfits_by_exp_2alphas,height=8,width=12,useDingbats=FALSE)}
 
 theme_set(theme_cowplot(font_size=12))
 exp_legend <- get_legend(utilfits_by_exp_2alphas)
@@ -7754,8 +7765,8 @@ grouped_utility_movedur <- plot_grid(plot_grid(Movedur_by_experiment+
                                      rel_heights = c(.4,.8))
 
 
-setwd(pref_plots_dir)
-if (save_plots){ggsave('grouped_utility_movedur.pdf',plot=grouped_utility_movedur,width=9/.8,height=9, useDingbats = FALSE)}
+#setwd(pref_plots_dir)
+if (save_plots){ggsave('GRAPHS/Preferred/grouped_utility_movedur.pdf',plot=grouped_utility_movedur,width=9/.8,height=9, useDingbats = FALSE)}
 
 ```
 
@@ -7767,8 +7778,8 @@ if (save_plots){ggsave('grouped_utility_movedur.pdf',plot=grouped_utility_movedu
 
 ```{r utilfits2alphas, echo = FALSE, warning = FALSE, fig.width=12, fig.height=9, fig.cap = 'Utility fits across experiments.'}
 
-  setwd(pref_plots_dir)
-  if (save_plots){ggsave(filename='utilfits_by_exp_2alphas.pdf',plot=utilfits_by_exp_2alphas,height=4,width=6,useDingbats=FALSE)}
+  #setwd(pref_plots_dir)
+  if (save_plots){ggsave(filename='GRAPHS/Preferred/utilfits_by_exp_2alphas.pdf',plot=utilfits_by_exp_2alphas,height=4,width=6,useDingbats=FALSE)}
   utilfits_by_exp_2alphas+
      theme(text=element_text(size=16),
            legend.position = 'none')
@@ -8810,8 +8821,8 @@ alt_ut_SSE_group_plot <- plot_grid(alt_ut_plot_allexp,
 
 alt_ut_SSE_group_plot
 
-setwd(pref_plots_dir)
-if (save_plots){ggsave('alt_ut_SSE_group_plot.pdf',plot=alt_ut_SSE_group_plot, width = 8, height = 8, useDingbats = FALSE)}
+#setwd(pref_plots_dir)
+if (save_plots){ggsave('GRAPHS/Preferred/alt_ut_SSE_group_plot.pdf',plot=alt_ut_SSE_group_plot, width = 8, height = 8, useDingbats = FALSE)}
 ```
 
 ## SSE NORMALIZED
@@ -8952,8 +8963,8 @@ alt_ut_SSE_norm_group_plot <- plot_grid(alt_ut_plot_allexp_norm,
 
 alt_ut_SSE_norm_group_plot
 
-setwd(pref_plots_dir)
-if (save_plots){ggsave('alt_ut_SSE_norm_group_plot.pdf',plot=alt_ut_SSE_norm_group_plot, width = 8, height = 8, useDingbats = FALSE)}
+#setwd(pref_plots_dir)
+if (save_plots){ggsave('GRAPHS/Preferred/alt_ut_SSE_norm_group_plot.pdf',plot=alt_ut_SSE_norm_group_plot, width = 8, height = 8, useDingbats = FALSE)}
 ```
 
 ```{r AltUtPlotGrouped, echo = FALSE, warning = FALSE,fig.height = 10, fig.width = 10}
@@ -8971,8 +8982,8 @@ alt_ut_SSE_absnorm_group_plot <- plot_grid(plot_grid(alt_ut_plot_allexp+theme(le
 
 alt_ut_SSE_absnorm_group_plot
 
-setwd(pref_plots_dir)
-if (save_plots){ggsave('alt_ut_SSE_absnorm_group_plot.pdf',plot=alt_ut_SSE_absnorm_group_plot, width = 10, height = 8, useDingbats = FALSE)}
+#setwd(pref_plots_dir)
+if (save_plots){ggsave('GRAPHS/Preferred/alt_ut_SSE_absnorm_group_plot.pdf',plot=alt_ut_SSE_absnorm_group_plot, width = 10, height = 8, useDingbats = FALSE)}
 ```
 
 # Making the utility plot
@@ -9242,7 +9253,7 @@ ut_torque <- ggplot()+
 
 
 
-setwd(pref_plots_dir)
+#setwd(pref_plots_dir)
 # if (save_plots){ggsave(filename='utilfits_by_exp_2alphas.pdf',plot=utilfits_by_exp_2alphas,height=8,width=12,useDingbats=FALSE)}
 
 # Grouping for plot ===============
@@ -9256,8 +9267,8 @@ ut_pred_plot = plot_grid(net_rwd_rate+theme(legend.position = 'none')+theme(text
 
 
 theme_set(theme_cowplot(font_size=7.76))
-setwd(pref_plots_dir)
-if (save_plots){ggsave(filename='ut_pred_plot.pdf',plot=ut_pred_plot,
+#setwd(pref_plots_dir)
+if (save_plots){ggsave(filename='GRAPHS/Preferred/ut_pred_plot.pdf',plot=ut_pred_plot,
                        height=4,
                        width=6,
                        useDingbats=FALSE)}
@@ -9978,23 +9989,23 @@ model_durs$norm_durs = norm_durs
 #                TeX('2b Utility'),
 #                TeX('2c Utility'))
 # models_to_plot = c(3,4,5,6,9,10,11,12)
-model_labs = c(TeX('2a Duration'),
-               TeX('2b Duration'),
-               TeX('3c Duration'),
-               TeX('2a Util'),
-               TeX('2b Util'),
-               TeX('2c Util'),
-               TeX('Net Cost'),
-               TeX('Gross Cost'),
-               TeX('$Torque^2$'),
-               TeX('4'),
-               TeX('5'),
-               TeX('6'),
-               TeX('8'),
-               TeX('9'),
-               TeX('10'),
-               TeX('12'),
-               TeX('15'))
+model_labs = c(latex2exp::TeX("'2a Duration'"),
+               latex2exp::TeX("'2b Duration'"),
+               latex2exp::TeX("'3c Duration'"),
+               latex2exp::TeX("'2a Util'"),
+               latex2exp::TeX("'2b Util'"),
+               latex2exp::TeX("'2c Util'"),
+               latex2exp::TeX("'Net Cost'"),
+               latex2exp::TeX("'Gross Cost'"),
+               latex2exp::TeX("'$Torque^2$'"),
+               latex2exp::TeX("'4'"),
+               latex2exp::TeX("'5'"),
+               latex2exp::TeX("'6'"),
+               latex2exp::TeX("'8'"),
+               latex2exp::TeX("'9'"),
+               latex2exp::TeX("'10'"),
+               latex2exp::TeX("'12'"),
+               latex2exp::TeX("'15'"))
 models_to_plot = c( 1,2,3,4,5,6,7,8,9)
 # models_to_plot = c(4,6,11)
 temp_durs = filter(model_durs, modelnum %in% models_to_plot)
@@ -10396,8 +10407,7 @@ errbar = rbind(cbind(aggregate(movedur~condition,prefdata,mean),
 colnames(errbar) = c('eff_mass','movedur','sd')
 errbar$eff_mass = errbar$eff_mass/2.2
 
-Model_movedur_shape <- model_plotting_addmass('movedur','Movement Duration (s)',temp_durs,errbar,'shape',normalized = 0)+
-  # theme_classic()
+Model_movedur_shape <- model_plotting_addmass('movedur','Movement Duration (s)',temp_durs,errbar,'shape',normalized = 0) +
   theme(text              = element_text(color='black'),
         axis.text         = element_text(color='black'),
         axis.ticks        = element_line(color='black'),
@@ -10412,8 +10422,8 @@ Model_movedur_color <- model_plotting_addmass('movedur','Movement Duration (s)',
         plot.title        = element_text(hjust = 0.5),
         axis.line         = element_line(color='black'))
 
-setwd(pref_plots_dir)
-if (save_plots){ggsave('Model_movedur_shape.pdf',plot=Model_movedur_shape, width = 7, height = 5, useDingbats = FALSE)}
+#setwd(pref_plots_dir)
+if (save_plots){ggsave('GRAPHS/Preferred/Model_movedur_shape.pdf',plot=Model_movedur_shape, width = 7, height = 5, useDingbats = FALSE)}
 
 temp_durs = model_durs
 temp_durs = filter(model_durs, modelnum %in% models_to_plot)
@@ -10567,8 +10577,8 @@ Results_model_r_shape <- plot_grid(Model_movedur_shape+theme(legend.position='no
          align = 'vh')
 Results_model_r_shape<-plot_grid(Results_model_r_shape,add_legend_shape,nrow=1,rel_widths = c(.85,.15))
 
-setwd(pref_plots_dir)
-if (save_plots){ggsave('Results_model_r_shape.pdf',plot = Results_model_r_shape, height = 8, width = 8/.85, useDingbats = FALSE)}
+#setwd(pref_plots_dir)
+if (save_plots){ggsave('GRAPHS/Preferred/Results_model_r_shape.pdf',plot = Results_model_r_shape, height = 8, width = 8/.85, useDingbats = FALSE)}
 
 Results_model_r_color <- plot_grid(Model_movedur_color+theme(legend.position='none'),
          Model_normmovedur_color+theme(legend.position='none'),
@@ -11043,19 +11053,19 @@ for (c in 1:length(unique(model_durs$modelnum))){
 }
 model_durs$norm_durs = norm_durs
 
-model_labs = c(TeX('$Mass^1$'),
-               TeX('$Mass^2$'),
-               TeX('$Torque^2$'),
-               TeX('Met Cost\nGross'),
-               TeX('Met Cost\nNet'),
-               TeX('Preferred\nDuration'),
-               TeX('Utility Gross'),
-               TeX('Utility Net'),
-               TeX('Utility Gross'),
-               TeX('Utility Net'),
-               TeX('Utility Gross\nComb Alpha'),
-               TeX('Utility Net\nComb Alpha'),
-               TeX('Accuracy Prob'))
+model_labs = c(latex2exp::TeX("'$Mass^1$'"),
+               latex2exp::TeX("'$Mass^2$'"),
+               latex2exp::TeX("'$Torque^2$'"),
+               latex2exp::TeX("'Met Cost\nGross'"),
+               latex2exp::TeX("'Met Cost\nNet'"),
+               latex2exp::TeX("'Preferred\nDuration'"),
+               latex2exp::TeX("'Utility Gross'"),
+               latex2exp::TeX("'Utility Net'"),
+               latex2exp::TeX("'Utility Gross'"),
+               latex2exp::TeX("'Utility Net'"),
+               latex2exp::TeX("'Utility Gross\nComb Alpha'"),
+               latex2exp::TeX("'Utility Net\nComb Alpha'"),
+               latex2exp::TeX("'Accuracy Prob'"))
 models_to_plot = c(3,4,5,6,9,10,11,12)
 temp_durs = filter(model_durs, modelnum %in% models_to_plot)
 
@@ -11539,8 +11549,8 @@ Results_model_r_shape <- plot_grid(Model_movedur_shape+theme(legend.position='no
          align = 'vh')
 Results_model_r_shape<-plot_grid(Results_model_r_shape,add_legend_shape,nrow=1,rel_widths = c(.85,.15))
 
-setwd(pref_plots_dir)
-if (save_plots){ggsave('Results_model_r_shape.pdf',plot = Results_model_r_shape, height = 8, width = 8/.85, useDingbats = FALSE)}
+#setwd(pref_plots_dir)
+if (save_plots){ggsave('GRAPHS/Preferred/Results_model_r_shape.pdf',plot = Results_model_r_shape, height = 8, width = 8/.85, useDingbats = FALSE)}
 
 Results_model_r_color <- plot_grid(Model_movedur_color+theme(legend.position='none'),
          Model_normmovedur_color+theme(legend.position='none'),
@@ -12015,19 +12025,19 @@ for (c in 1:length(unique(model_durs$modelnum))){
 }
 model_durs$norm_durs = norm_durs
 
-model_labs = c(TeX('$Mass^1$'),
-               TeX('$Mass^2$'),
-               TeX('$Torque^2$'),
-               TeX('Met Cost\nGross'),
-               TeX('Met Cost\nNet'),
-               TeX('Preferred\nDuration'),
-               TeX('Utility Gross'),
-               TeX('Utility Net'),
-               TeX('Utility Gross'),
-               TeX('Utility Net'),
-               TeX('Utility Gross\nComb Alpha'),
-               TeX('Utility Net\nComb Alpha'),
-               TeX('Accuracy Prob'))
+model_labs = c(latex2exp::TeX("'$Mass^1$'"),
+               latex2exp::TeX("'$Mass^2$'"),
+               latex2exp::TeX("'$Torque^2$'"),
+               latex2exp::TeX("'Met Cost\nGross'"),
+               latex2exp::TeX("'Met Cost\nNet'"),
+               latex2exp::TeX("'Preferred\nDuration'"),
+               latex2exp::TeX("'Utility Gross'"),
+               latex2exp::TeX("'Utility Net'"),
+               latex2exp::TeX("'Utility Gross'"),
+               latex2exp::TeX("'Utility Net'"),
+               latex2exp::TeX("'Utility Gross\nComb Alpha'"),
+               latex2exp::TeX("'Utility Net\nComb Alpha'"),
+               latex2exp::TeX("'Accuracy Prob'"))
 models_to_plot = c(3,4,5,6,9,10,11,12)
 temp_durs = filter(model_durs, modelnum %in% models_to_plot)
 
@@ -12511,8 +12521,8 @@ Results_model_r_shape <- plot_grid(Model_movedur_shape+theme(legend.position='no
          align = 'vh')
 Results_model_r_shape<-plot_grid(Results_model_r_shape,add_legend_shape,nrow=1,rel_widths = c(.85,.15))
 
-setwd(pref_plots_dir)
-if (save_plots){ggsave('Results_model_r_shape.pdf',plot = Results_model_r_shape, height = 8, width = 8/.85, useDingbats = FALSE)}
+#setwd(pref_plots_dir)
+if (save_plots){ggsave('GRAPHS/Preferred/Results_model_r_shape.pdf',plot = Results_model_r_shape, height = 8, width = 8/.85, useDingbats = FALSE)}
 
 Results_model_r_color <- plot_grid(Model_movedur_color+theme(legend.position='none'),
          Model_normmovedur_color+theme(legend.position='none'),
