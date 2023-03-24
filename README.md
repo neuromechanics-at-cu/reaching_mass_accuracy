@@ -1,4 +1,5 @@
-# Analysis scripts for "Disentangling the Effects of Metabolic Cost and Accuracy on Movement Vigor"
+# README
+## Analysis scripts for *Disentangling the Effects of Metabolic Cost and Accuracy on Movement Vigor*
 
 ### Setup
 
