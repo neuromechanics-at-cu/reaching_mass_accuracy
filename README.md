@@ -9,7 +9,8 @@
 
 ### Run analysis
 + Once packages are installed, run ***Mass_Tests_Small.Rmd*** 
-  + NOTE: this may take some time to complete   
+  + NOTE: this may take some time to complete  
++ Pre-compiled HTML doc is also included here: ***Mass_Tests_Small.html*** 
 
 ### Additional information
 + If ***Mass_Tests_Small.Rmd*** runs successfully, compiled HTML doc of the same name will be generated
