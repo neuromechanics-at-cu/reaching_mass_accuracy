@@ -2,6 +2,9 @@
 ### Analysis scripts for [*Disentangling the Effects of Metabolic Cost and Accuracy on Movement Vigor*](https://www.biorxiv.org/content/10.1101/2023.02.08.527734v2)
 
 ### Setup
++ Some data files are git Large File Storage (LFS) objects
+  + Once repository is cloned, move into directory and run: `git lfs fetch --all` 
+  + LFS objects should be retrieved
 + Currently setup as an R project
   + Including \*.Rproj file in parent directory should allow scripts to run without any changes
 + Line 17 of ***Mass_Tests_Small.Rmd***: `pacman::p_load(<PACKAGES>)` should install and load all packages
